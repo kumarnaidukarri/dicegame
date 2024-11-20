@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./diceGame.png" />
+    <title>Dice Game</title>
+    <!-- CSS linking -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="bg-container">
+      <div class="inner-container">
+        <!-- player1 -->
+        <div class="player-container pc-1 player--active">
+          <h2 class="name">PLAYER 1</h2>
+          <p class="totalscore">0</p>
+          <div class="current-box">
+            <p class="current-label">CURRENT</p>
+            <p class="current-score">0</p>
+          </div>
+        </div>
+        <!-- player2 -->
+        <div class="player-container pc-2">
+          <h2 class="name">PLAYER 2</h2>
+          <p class="totalscore">0</p>
+          <div class="current-box">
+            <p class="current-label">CURRENT</p>
+            <p class="current-score">0</p>
+          </div>
+        </div>
+        <!-- all buttons with new layer -->
+        <img src="./images/dice-1.png" alt="rolling dice" class="dice-img" />
+        <button class="btn btn--newgame">🔄 New game</button>
+        <a href="#" class="roll-anchor"
+          ><button class="btn btn--rolldice">🎲 Roll dice</button></a
+        >
+        <a href="#" class="hold-anchor"
+          ><button class="btn btn--hold">📥 Hold</button></a
+        >
+      </div>
+    </section>
+    <!-- additional Help info section -->
+    <a href="#popup-container"
+      ><button class="btn btn--howtoplay">How To Play</button></a
+    >
+    <section class="help-box">
+      <!-- PopupBox section - Hidden bydefault, open only when user clicks HowtoPlay-->
+      <div id="popup-container">
+        <ul class="popup-list">
+          <li class="list-item">
+            This is a multiplayer dice game where players take turns rolling the
+            dice. The first player to reach a total score of 50 wins.
+          </li>
+          <li class="list-item">
+            using 'roll dice' button, you can the roll dice. &nbsp;using 'hold'
+            button, you can save current round score safely to the total score
+            and turn goes to next player.
+          </li>
+          <li class="list-item">
+            On each turn,You can dice as many times you want. But if you roll a
+            1, you will lose your current round score and turn goes to next
+            player.
+          </li>
+          <li class="list-item">
+            Win or Loose, &nbsp;it will depend on your luck. If you are too
+            greedy to roll more times in a single round, Chances are high to
+            loose all your current round score.
+          </li>
+          <li class="list-item">
+            <a href="#"
+              ><button class="btn btn--goback">Go back to Game</button></a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- end of hidden Popupcontainer -->
+    </section>
+    <section class="win-box">
+      <!-- PopupBox section - Hidden bydefault, open only when user Won game-->
+      <div id="Winpopup-container">
+        <ul class="popup-list">
+          <li class="list-item won-heading"></li>
+          <li class="list-item">
+            <a href="#"
+              ><button class="btn btn--goback btn--startnewgame">
+                Start New Game
+              </button></a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- end of hidden Popupcontainer -->
+    </section>
+
+    <!-- Javascript linking -->
+    <script src="./index.js"></script>
+  </body>
+</html>

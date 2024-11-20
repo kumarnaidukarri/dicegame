@@ -1,0 +1,399 @@
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+body {
+  font-family: "nunitio", sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to right bottom, #bf2e34, #753682);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner-container {
+  background-color: rgba(255, 255, 255, 0.35);
+  width: 80%;
+  height: 70%;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.player-container {
+  flex-basis: 50%;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.totalscore {
+  font-size: 8rem;
+  font-weight: 300;
+  margin-top: 4rem;
+  color: #c7365f;
+}
+.current-box {
+  text-align: center;
+  padding: 2.4rem 5rem;
+  margin-top: 12rem;
+  border-radius: 8px;
+  background-color: #c7365f;
+}
+.current-label {
+  font-size: 2rem;
+  color: #ddd;
+  text-transform: uppercase;
+}
+.current-score {
+  font-size: 3.4rem;
+  font-weight: 200;
+  margin-top: 1rem;
+  color: white;
+}
+/* active player */
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid pink;
+  box-shadow: 0 10px 20px pink;
+
+  transition: all 0.4s ease;
+}
+
+/* /////////////// */
+/* Buttons section*/
+.dice-img {
+  display: inline-block;
+  max-width: 12rem;
+  max-height: 12rem;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 10;
+}
+.dice-img--animate {
+  animation: rollDiceAnimation 0.7s 0s ease-in; /*name duration delay timefunc*/
+}
+/* Rolling Dice Animation */
+@keyframes rollDiceAnimation {
+  from {
+    transform: scale(0) translate(-50%, 50%);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translate(-50%, 50%);
+    opacity: 1;
+  }
+}
+
+a {
+  display: inline-block;
+}
+.btn {
+  padding: 2rem 4rem;
+  font-size: 2.4rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn--howtoplay {
+  position: absolute;
+  top: 3%;
+  right: 1.5%;
+  z-index: 10;
+
+  transition: all 0.4s ease;
+  border: 2px solid transparent; /*fixing - hoverstate sudden bordersizeUp*/
+}
+.btn--howtoplay:hover {
+  transform: scale(1.1);
+  border: 2px solid pink;
+  box-shadow: 0 10px 20px pink;
+}
+.btn--newgame {
+  background-color: #fff;
+  color: #333;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 50%);
+  z-index: 10;
+
+  transition: all 0.4s ease;
+  border: 2px solid transparent; /*fixing - hoverstate sudden bordersizeUp*/
+}
+.btn--newgame:hover {
+  transform: translate(-50%, 50%) scale(1.1);
+  border: 2px solid pink;
+  box-shadow: 0 10px 20px pink;
+}
+.btn--rolldice {
+  background-color: #fff;
+  color: #333;
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+
+  transition: all 0.4s ease;
+  border: 2px solid transparent; /*fixing - hoverstate sudden bordersizeUp*/
+}
+.btn--hold {
+  background-color: #fff;
+  color: #333;
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+
+  transition: all 0.4s ease;
+  border: 2px solid transparent; /*fixing - hoverstate sudden bordersizeUp*/
+}
+.btn--rolldice:hover,
+.btn--hold:hover {
+  transform: translate(-50%, 0) scale(1.1);
+  border: 2px solid pink;
+  box-shadow: 0 10px 20px pink;
+}
+
+/* ////////////////////// */
+/* PopupBox Section */
+#popup-container,
+#Winpopup-container {
+  /* bydefault Popup is Hidden from User. Popup is show, when HowtoPlay button is clicked which navigates/targets to PopupElement  */
+  opacity: 0; /* invisible */
+  visibility: hidden; /* not accessible */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px); /*blurs our element*/
+
+  height: 100vh;
+  width: 100vw;
+  transform: scale(0.1);
+  transition: all 1s; /*target state*/
+}
+.popup-list {
+  opacity: 0; /* invisible */
+  visibility: hidden; /* not accessible */
+
+  width: 70%;
+  height: 70%;
+  transform: translate(22.5%, 22.5%);
+  color: white;
+  background-color: #753682;
+  box-shadow: 0 10px 20px rgba(128, 0, 128, 0.676);
+  padding-left: 4rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.list-item {
+  font-family: "Roboto";
+  font-size: 3rem;
+}
+.list-item:hover {
+  box-shadow: 0 10px 50px rgba(255, 255, 255, 0.35);
+}
+/* lastlist Item */
+.list-item:last-child {
+  list-style-type: none;
+}
+/* lastlist Item Hoverstate */
+.list-item:last-child:hover {
+  box-shadow: none;
+}
+.btn--goback {
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  color: white;
+  transition: all 0.4s ease-out;
+}
+.btn--goback:hover {
+  transform: scale(1.1);
+}
+#popup-container:target {
+  /* when User clicks 'Howtoplay button' navigates to this Pop-container. it means Popupcontainer is 'Targeted state' */
+  opacity: 1; /* visible */
+  visibility: visible; /* accessible */
+  transform: scale(1);
+}
+#popup-container:target .popup-list {
+  /* Apply styles to popup-list when popupcontainer is targeted */
+  opacity: 1; /* visible */
+  visibility: visible; /* accessible */
+}
+/* COPY SAME CSS RulesSets for Win-Pop-box */
+#Winpopup-container .popup-list {
+  background-color: #222;
+  box-shadow: 0 10px 20px red;
+}
+#Winpopup-container .list-item {
+  font-size: 4.4rem;
+  margin-top: 10rem;
+}
+#Winpopup-container .list-item:last-child {
+  margin-top: 0;
+  text-align: center;
+}
+.btn--startnewgame {
+  color: #222;
+  background-color: white;
+  box-shadow: 0 5px 20px red;
+  font-weight: 800;
+}
+.btn--startnewgame:hover {
+  color: red;
+  background: #222;
+  text-shadow: 0 5px 20px red;
+  box-shadow: 0 5px 20px red;
+  border: 1px solid red;
+  font-size: 5rem;
+}
+#Winpopup-container:target {
+  /* when User clicks 'Howtoplay button' navigates to this Pop-container. it means Popupcontainer is 'Targeted state' */
+  opacity: 1; /* visible */
+  visibility: visible; /* accessible */
+  transform: scale(1);
+}
+#Winpopup-container:target .popup-list {
+  /* Apply styles to popup-list when popupcontainer is targeted */
+  opacity: 1; /* visible */
+  visibility: visible; /* accessible */
+}
+.won-heading {
+  list-style: none;
+  color: red;
+  text-align: center;
+}
+
+/* /////////////////// */
+/* MEDIA QUEIRES 
+ Desktop firstApproach and breakpoints where design breaks */
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+  .list-item {
+    font-size: 2.8rem;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .inner-container {
+    width: 90%;
+  }
+  .name {
+    font-size: 3.6rem;
+  }
+  .totalscore {
+    font-size: 7rem;
+  }
+  .current-box {
+    padding: 2rem 4rem;
+  }
+  .current-label {
+    font-size: 1.8rem;
+  }
+  .current-score {
+    font-size: 3.2rem;
+  }
+  .btn {
+    padding: 1.8rem 3.2rem;
+    font-size: 2.2rem;
+  }
+  .dice-img {
+    width: 11rem;
+    height: 11rem;
+  }
+  .list-item {
+    font-size: 2.6rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .inner-container {
+    height: 55%;
+  }
+  .pc-1 {
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+  .pc-2 {
+    align-items: flex-end;
+    padding-right: 1rem;
+  }
+  .name {
+    font-size: 3rem;
+  }
+  .totalscore {
+    font-size: 5.5rem;
+  }
+  .pc-1 .totalscore {
+    align-self: flex-start;
+    padding-left: 5rem;
+  }
+  .pc-2 .totalscore {
+    align-self: flex-end;
+    padding-right: 5rem;
+  }
+  .current-box {
+    padding: 1.1rem 02rem;
+  }
+  .current-label {
+    font-size: 1.6rem;
+  }
+  .current-score {
+    font-size: 3rem;
+  }
+
+  .btn {
+    font-size: 1.8rem;
+    padding: 1.4rem;
+  }
+  .dice-img {
+    height: 8rem;
+    width: 8rem;
+  }
+  .popup-list {
+    padding-left: 3rem;
+    padding-right: 1rem;
+  }
+  .list-item {
+    font-size: 2.2rem;
+  }
+  .btn--goback {
+    font-size: 2rem;
+  }
+}

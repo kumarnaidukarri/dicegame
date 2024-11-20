@@ -1,0 +1,20 @@
+
+
+Info:
+2 players
+'roll dice' button - the number gets added to currentscore.
+'hold' button  -   the score of currentRound gets added to TotalScore. rolling switches to Player 2
+'newgame' button -  to reset all scores and start new game
+
+if 1 number came in Dice roll, we loose all currentscore in currentRound. also switches  rolling to Next Player.  
+
+
+
+
+This is a multiplayer dice game where players take turns rolling the  dice. The first player to reach a total score of 100 wins.
+using 'roll dice' button, you can the roll dice. &nbsp;using 'hold' button, you can save current round score safely to the total score and turn goes to next player.
+On each turn,You can dice as many times you want. But if you roll a 1, you will lose your current round score and turn goes to next player.
+Win or Loose, It will depend on your luck. If you are too greedy to roll more times in a single round, Chances are high to loose all your current round score.
+
+
+
