@@ -347,7 +347,6 @@ a {
 @media only screen and (max-width: 500px) {
   .inner-container {
     height: 55%;
-    width:95%;
   }
   .pc-1 {
     align-items: flex-start;
