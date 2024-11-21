@@ -209,7 +209,7 @@ a {
   visibility: hidden; /* not accessible */
 
   width: 70%;
-  height: 70%;
+  height: auto;
   transform: translate(22.5%, 22.5%);
   color: white;
   background-color: #753682;
@@ -259,6 +259,7 @@ a {
 #Winpopup-container .popup-list {
   background-color: #222;
   box-shadow: 0 10px 20px red;
+  height: 70vh;
 }
 #Winpopup-container .list-item {
   font-size: 4.4rem;
@@ -268,6 +269,12 @@ a {
   margin-top: 0;
   text-align: center;
 }
+.won-heading {
+  list-style: none;
+  color: red;
+  text-align: center;
+}
+
 .btn--startnewgame {
   color: #222;
   background-color: white;
@@ -292,11 +299,6 @@ a {
   /* Apply styles to popup-list when popupcontainer is targeted */
   opacity: 1; /* visible */
   visibility: visible; /* accessible */
-}
-.won-heading {
-  list-style: none;
-  color: red;
-  text-align: center;
 }
 
 /* /////////////////// */
@@ -345,6 +347,7 @@ a {
 @media only screen and (max-width: 500px) {
   .inner-container {
     height: 55%;
+    width: 100%;
   }
   .pc-1 {
     align-items: flex-start;
@@ -382,18 +385,23 @@ a {
     font-size: 1.8rem;
     padding: 1.4rem;
   }
+  .btn--newgame {
+    transform: translate(-50%, -25%);
+  }
   .dice-img {
     height: 8rem;
     width: 8rem;
   }
   .popup-list {
-    padding-left: 3rem;
-    padding-right: 1rem;
+    padding: 1rem 1rem 1rem 3rem;
+    transform: translate(22.5%, 15%);
   }
   .list-item {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+    margin: 0.25rem 0;
   }
   .btn--goback {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin: 1rem 0;
   }
 }
