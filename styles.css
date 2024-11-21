@@ -209,7 +209,7 @@ a {
   visibility: hidden; /* not accessible */
 
   width: 70%;
-  height: auto;
+  height: 70%;
   transform: translate(22.5%, 22.5%);
   color: white;
   background-color: #753682;
